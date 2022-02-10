@@ -1,3 +1,6 @@
+from werkzeug.wrappers import Response
+
+
 def application(env, start_response):
-    start_response('200 OK', [('Content-Type', 'text/html')])
-    return [b"Hello, World!"]
+    response = Response('Hello, World!', mimetype='text/plain')
+    return response(env, start_response)
