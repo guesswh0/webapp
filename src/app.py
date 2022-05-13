@@ -1,8 +1,4 @@
-from werkzeug.wrappers import Request, Response
-
-
 def application(env, start_response):
-    request = Request(env)
-    text = f"Hello, {request.args.get('name', 'World')}!"
-    response = Response(text, mimetype='text/plain')
-    return response(env, start_response)
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    user = env.get('USER', "World")
+    return [f"Hello, {user}!".encode('ascii')]

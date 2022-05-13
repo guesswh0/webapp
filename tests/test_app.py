@@ -14,7 +14,3 @@ def test_default(client):
     assert response.status == '200 OK'
     assert response.data == b'Hello, World!'
 
-def test_name(client):
-    response = client.get('/?name=Test')
-    assert response.status == '200 OK'
-    assert response.data == b'Hello, Test!'
